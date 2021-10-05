@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Api } from "../../api/Api";
 import ProfileCard from "../ProfileCard/ProfileCard";
 
@@ -22,7 +23,9 @@ export function ProfileList(){
     return(
         <div className="profileCards">
             {profiles.map((profile, index) => (
-                <ProfileCard profile={profile} key={index}></ProfileCard>
+                <Link to={'/games'}>
+                    <ProfileCard profile={profile} key={index}></ProfileCard>
+                </Link>
             ))}
         </div>
     );
