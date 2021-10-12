@@ -1,0 +1,52 @@
+.header{
+    height: 8vh;
+    text-align: center;
+    background-color: grey;
+    margin-bottom: 2vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+#logo{
+    height: 8vh;
+    width: 8vh;
+}
+.logo-container{
+    position: absolute;
+    display: inline-block;
+    left: 1vw;
+}
+
+.name{
+    width : 30%;
+    height : 1vh;
+    display: inline;
+    align-items: center;
+}
+
+nav{
+    position: absolute;
+    top: 0px;
+    right:0px;
+}
+
+nav a{
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+nav li{
+    display: inline;
+    margin: 0 0 0 15px;
+}
+
+#profileImg{
+    height: 5vh;
+    width: 5vh; 
+}
+
+.name{
+}
+

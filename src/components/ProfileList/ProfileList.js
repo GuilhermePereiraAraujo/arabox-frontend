@@ -8,23 +8,20 @@ export function ProfileList(){
 
     useEffect(() => {
         const loadData = async () => {
-            const response = await Api.buildApiGetRequest(Api.readAllProfiles(), true);
+            const response = await Api.buildApiGetRequest(Api.readCurrentUserProfiles(), true);
         
             const bodyResult = await response.json();
 
-            setprofiles
-            (bodyResult);
+            setprofiles(bodyResult.user.profiles);
         };
-
         loadData();
-
     }, []);
 
     return(
         <div className="profileCards">
             {profiles.map((profile, index) => (
-                <Link to={'/games'}>
-                    <ProfileCard profile={profile} key={index}></ProfileCard>
+                <Link to={'/games'} key={index}>
+                    <ProfileCard profile={profile} ></ProfileCard>
                 </Link>
             ))}
         </div>

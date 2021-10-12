@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Api } from "../../api/Api";
-import UserCard from "../UserCard/UserCard";
+import LoginForm from "../LoginForm/LoginForm";
+//import UserCard from "../UserCard/UserCard";
 
 export function UserList(){
     const [users, setUsers] = useState([]);
@@ -19,10 +20,16 @@ export function UserList(){
     }, []);
 
     return(
-        <div className="userCards">
-            {users.map((user, index) => (
-                <UserCard user={user} key={index}></UserCard>
+        <div>
+            {users.map((user) => (
+                <div className="formWrapper" key={`${user.name}`}>
+                <LoginForm user={user} />
+                </div>
             ))}
+            <div className="formWrapper">
+            <p className="cardTitle">New User</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXRffEfuvuPp3O1DNDq3qHvSYKPFINLuqBSQ&usqp=CAU" alt="addPlayer" className="cardImage"/>         
+            </div>
         </div>
     );
 }

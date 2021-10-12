@@ -26,8 +26,8 @@ export default function LoginForm(props){
     };
 
     return (
-        <div>
-            <form className="loginData__form form" onSubmit={handleSubmit}>
+        <div className = "formWrapper"  >
+            <form className="loginData__form form" onSubmit={handleSubmit} style={{ backgroundImage: `url(${props.user.avatarUrl})`}}>
                 <label htmlFor="email" className="form__label">
                     E-mail:
                 </label>
@@ -35,7 +35,6 @@ export default function LoginForm(props){
 
                 <input
                     type="text"
-                    id="email"
                     name="email"
                     className="form__input"
                 />
@@ -49,7 +48,6 @@ export default function LoginForm(props){
 
                 <input
                     type="password"
-                    id="senha"
                     name="senha"
                     className="form__input"
                 />

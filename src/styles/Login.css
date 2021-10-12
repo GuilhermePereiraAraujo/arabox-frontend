@@ -1,0 +1,46 @@
+.userWrapper{
+    height: 175px;
+    width: 175px;     
+}
+
+.loginData__form{
+    image-rendering: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 175px;
+    width: 175px;
+    padding-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+input{
+    width: fit-content;
+}
+
+.formWrapper{
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    padding-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem; 
+}
+
+#body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hidden{
+    display: none;
+}
+
+.shown{
+    display: block;
+}
+

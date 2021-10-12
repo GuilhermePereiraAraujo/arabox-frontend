@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Api } from "../../api/Api";
 import GamesCard from "../GamesCard/GamesCard";
 
@@ -21,7 +22,9 @@ export function GamesList(){
     return(
         <div className="gameCards">
             {games.map((game, index) => (
-                    <GamesCard game={game} key={index}></GamesCard>
+                    <Link to={`/game/${game.id}`}>
+                    <GamesCard game={game} key={index}/>
+                    </Link>
             ))}
         </div>
     );
