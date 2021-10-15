@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Api } from "../../api/Api";
 import GamesCard from "../GamesCard/GamesCard";
+import add from "./add.png";
 
 export function GamesList(){
     const [games, setGames] = useState([]);
@@ -26,6 +27,9 @@ export function GamesList(){
                     <GamesCard game={game} key={index}/>
                     </Link>
             ))}
+            <Link to={`/creategame`}>
+                <img src={add}/>
+            </Link>
         </div>
     );
 }

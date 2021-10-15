@@ -20,6 +20,13 @@ export default function Viewgame(props){
         loadGame();
     }, [id]);
 
+    const handleDelete = async () => {
+        const auth = Boolean(localStorage.getItem("JWT"));
+        await Api.buildApiDeleteRequest(
+        Api.deleteGame(id), auth
+        );
+    }
+
     if(!game){
         return(<div>Loading...</div>);
     }
@@ -33,10 +40,7 @@ export default function Viewgame(props){
                     Edit Game
                 </Link>
                 <br/>
-                <Link to={"/game/delete/"+ id} 
-                className="delete button">
-                    Delete Game
-                </Link>
+                <button onClick={() => handleDelete()}></button>
             </div>
             <p>Title: {game.title}</p>
             <GamesCard game={game}/>

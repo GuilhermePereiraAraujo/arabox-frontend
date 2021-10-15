@@ -11,6 +11,7 @@ import Header from "./components/Header/Header";
 import '../src/styles/Header.css'
 import Viewgame from "./pages/ViewGame/ViewGame";
 import UpdateGame from "./pages/UpdateGame/UpdateGame";
+import CreateGame from "./pages/CreateGame/CreateGame";
 
 export function App() {
   
@@ -21,10 +22,12 @@ export function App() {
         <Switch>
           <Route path="/" exact={true} component={Home}/>
           <Route path="/login" exact={true} component={Login}/>
-          <Route path="/profiles" exact={true} component={Profiles} />
-          <Route path="/games" exact={true} component={LoggedProfile} />
-          <Route path="/game/:id" exact={true} component={Viewgame} />
-          <Route path="/game/update/:id" exact={true} component={UpdateGame} />
+          <Route path="/profiles" exact={true} component={Profiles}/>
+          <Route path="/games" exact={true} component={LoggedProfile}/>
+          <Route path="/game/:id" exact={true} component={Viewgame}/>
+          <Route path="/game/update/:id" exact={true} component={UpdateGame}/>
+          <Route path="/creategame" exact={true} component={CreateGame}/>
+
         </Switch>
       </div>
     </div>

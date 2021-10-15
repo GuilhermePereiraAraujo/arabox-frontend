@@ -25,6 +25,9 @@ export const Api = {
     readGameById: (id) => Api.baseUrl + `/game/${id}`,
     createGame: () => Api.baseUrl + "/game",
     updateGame: (id) => Api.baseUrl + `/game/${id}`,
+    deleteGame: (id) => Api.baseUrl + `/game/${id}`,
+
+    readAllGenres: () => Api.baseUrl + "/genre",
     
     // Get
     buildApiGetRequest: (url, auth) =>
@@ -50,5 +53,11 @@ export const Api = {
                 "Content-type": "application/json",
             }),
             body: JSON.stringify(body),
+        }),
+
+    buildApiDeleteRequest: (url, auth) => 
+        fetch(url, {
+            method: "DELETE",
+            headers: auth ? new Headers({ ...Api.authHeader() }) : undefined,
         }),
 };
