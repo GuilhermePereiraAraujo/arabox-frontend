@@ -1,3 +1,5 @@
+import { JwtHandler } from '../Jwthandler/Jwthandler';
+
 export const Api = {
     // Base URL
     baseUrl: 'http://localhost:3000',
@@ -6,7 +8,7 @@ export const Api = {
     loginUrl: () => Api.baseUrl + "/login",
 
     authHeader: () => ({
-        Authorization: "Bearer " + localStorage.getItem("JWT"),
+        Authorization: "Bearer " + JwtHandler.getJwt(),
     }),
     
     // Funções de Requisição User
@@ -15,7 +17,7 @@ export const Api = {
     createUser: () => Api.baseUrl + "/user",
 
     // Funções de Requisição Profiles
-    readCurrentUserProfiles: () => Api.baseUrl + "/user/currentUser",
+    readCurrentUser: () => Api.baseUrl + "/user/currentUser",
     readAllProfiles: () => Api.baseUrl + "/profile",
     readOneProfile: (id) => Api.baseUrl + `/profile/${id}`,
     createProfile: () => Api.baseUrl + "/profile",

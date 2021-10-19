@@ -1,27 +1,30 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Api } from "../../api/Api";
+import { JwtHandler } from "../../Jwthandler/Jwthandler";
 
-export default function Login(){
-    let history = useHistory();
+export default function Login(props){
     const handleSubmit = async event => {
-    event.preventDefault();
+        event.preventDefault();
 
-    const email = event.target.email.value;
-    const senha = event.target.senha.value;
+        const email = event.target.email.value;
+        const senha = event.target.senha.value;
 
-    const payload = {
-        email,
-        senha,
-    };
+        const payload = {
+            email,
+            senha,
+        };
 
-    const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
+        const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
 
-    const bodyResult = await response.json();
+        const bodyResult = await response.json();
 
-    localStorage.setItem("JWT", bodyResult.accessToken);
-
-    history.push("/profiles");
+        if(response.status === 200) {
+            const accessToken = bodyResult.accessToken;
+            JwtHandler.setJwt(accessToken);
+            console.log({accessToken});
+            props.history.push("/profiles");
+        }
     };
 
     return (

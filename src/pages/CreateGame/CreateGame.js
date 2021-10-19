@@ -15,7 +15,6 @@ export default function CreateGame(){
 
     const [data, setData] = useState(newGameData);
     const [genre, setGenre] = useState([]);
-    const auth = Boolean(localStorage.getItem("JWT"));
 
     const loadGenres = async () => {
         await Api.buildApiGetRequest(Api.readAllGenres())
