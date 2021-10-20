@@ -23,14 +23,14 @@ export function GamesList(){
     return(
         <div className="gameCards">
             {games.map((game, index) => (
-                    <Link to={`/game/${game.id}`}>
-                        <GamesCard game={game} key={index}/>
-                    </Link>
+
+                <GamesCard game={game} key={index}/>
+
             ))}
             <Link to={`/creategame`}>
                 <div className="card wrapper" >
                     <img src={add} className="cardImage"/>
-                    <p className="gameName">Add Game</p>
+                    <p className="createGame">Add Game</p>
                 </div>
             </Link>
         </div>

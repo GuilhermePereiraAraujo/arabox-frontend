@@ -1,0 +1,46 @@
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.gameName{
+    font-size: 10px;
+    margin: 0;
+}
+
+.gameYear{
+    font-size: 10px;
+    margin : 0;
+}
+
+.card .details{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardImage{
+    max-width: 20vw;
+    max-height: 30vh;
+    width: auto;
+    height: auto;
+}
+
+
+.card{
+    align-items: center;
+    display: inline-block;
+    margin-top: 2px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+a{
+    color: black;
+}
+
+svg{
+    fill: rgb(148, 148, 0);
+}

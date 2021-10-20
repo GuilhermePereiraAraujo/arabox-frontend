@@ -13,8 +13,11 @@ export const Api = {
     
     // Funções de Requisição User
     readAllUsers: () => Api.baseUrl + "/user",
-    readOneUser: (id) => Api.baseUrl + `/user/${id}`,
+    readUserById: (id) => Api.baseUrl + `/user/${id}`,
+    readUserByEmail: (email) => Api.baseUrl + `/user/${email}`,
     createUser: () => Api.baseUrl + "/user",
+    updateUser: (id) => Api.baseUrl + `/user/${id}`,
+    deleteUame: (id) => Api.baseUrl + `/user/${id}`,
 
     // Funções de Requisição Profiles
     readCurrentUser: () => Api.baseUrl + "/user/currentUser",
@@ -29,7 +32,9 @@ export const Api = {
     updateGame: (id) => Api.baseUrl + `/game/${id}`,
     deleteGame: (id) => Api.baseUrl + `/game/${id}`,
 
+    createGenre: () => Api.baseUrl + "/genre",
     readAllGenres: () => Api.baseUrl + "/genre",
+    readGenreById: (id) => Api.baseUrl + `/genre/${id}`,
     
     // Get
     buildApiGetRequest: (url, auth) =>

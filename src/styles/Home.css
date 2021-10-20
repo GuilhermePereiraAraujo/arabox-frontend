@@ -5,14 +5,12 @@
     flex-direction: row;
 }
 
-.cardImage{
-    max-width: 20vw;
-    max-height: 30vh;
-    width: auto;
-    height: auto;
+.createGame{
+    position: absolute;
+    top: 36%;
+    left: 31%;
 }
 
-
-.card{
-    align-items: center;
+.wrapper{
+    position: relative;
 }

@@ -1,9 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router";
 import { Api } from "../../api/Api";
 import { JwtHandler } from "../../Jwthandler/Jwthandler";
 
 export default function Login(props){
+    
     const handleSubmit = async event => {
         event.preventDefault();
 
@@ -18,12 +18,13 @@ export default function Login(props){
         const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
 
         const bodyResult = await response.json();
+        
+
 
         if(response.status === 200) {
             const accessToken = bodyResult.accessToken;
             JwtHandler.setJwt(accessToken);
-            console.log({accessToken});
-            props.history.push("/profiles");
+            props.history.push(`/profiles`);
         }
     };
 

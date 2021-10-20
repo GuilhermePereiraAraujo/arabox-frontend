@@ -20,10 +20,14 @@ export default function Profiles(){
         loadData();
     }, []);
 
+    const saveProfile = (profile) => {
+        localStorage.setItem("profile", JSON.stringify(profile));
+    }
+
     return(
         <div className="profileCards">
             {profiles.map((profile, index) => (
-                <Link to={'/games'} key={index}>
+                <Link to={`/mygames/${profile.id}`}   onClick={() => {saveProfile(profile)}} key={index}>
                     <div className="card">
                         <h1 className="card__title">{profile.nome}</h1>
                         <img src={profile.avatarUrl} alt={profile.nome} width="200"/>

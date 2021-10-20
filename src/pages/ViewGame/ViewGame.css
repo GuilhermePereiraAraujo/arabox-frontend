@@ -1,0 +1,21 @@
+.gameView{
+    display: flex;
+    justify-content: center;
+}
+
+.imageGameView{
+    height: 50vh;
+}
+
+.detailsView{
+    width: 20%;
+}
+
+.viewGame-videos{
+    display: flex;
+    flex-direction: column;
+}
+
+iframe{
+    padding: 5px;
+}
