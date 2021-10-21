@@ -32,17 +32,17 @@ export default function CreateProfile(){
         event.preventDefault();
         const payload = data;
         console.log(payload);
-        await Api.buildApiPostRequest(Api.createProfile(), payload).
-        then((response) =>{
-            if(response.status !== 200) {
-                throw new Error(response.text);
+        await Api.buildApiPostRequest(Api.createProfile(), payload)
+          .then(response => {
+            if (response.status !== 200) {
+              throw new Error(response.text);
             }
             toast.success("Profile registered!");
-        })
-        .catch((err) => {
+          })
+          .catch(err => {
             console.log(err);
             toast.error("Failed profile registry!");
-        });
+          });
     };
 
     return (

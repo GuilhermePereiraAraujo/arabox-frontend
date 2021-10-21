@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { Api } from "../../api/Api";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { Api } from "../../api/Api";
+import { JwtHandler } from "../../Jwthandler/Jwthandler";
 const newGenreData = {
-    genreName: "",
+  genreName: "",
 };
-export default function CreateGenre(){
+export default function CreateGenre() {
+  const auth = Boolean(JwtHandler.getJwt());
+  const [data, setData] = useState(newGenreData);
 
-    const [data, setData] = useState(newGenreData);
+  const onChange = event => {
+    const { name, value } = event.target;
+    setData({ ...data, [name]: value });
+  };
 
-    const onChange = (event) => {
-        const {name, value} = event.target;
-        setData({...data, [name]: value});
+  const handleSubmit = async event => {
+    event.preventDefault();
+    const payload = {
+      ...data,
     };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const payload = {
-            ...data,
-        };
-        console.log(payload);
-        await Api.buildApiPostRequest(Api.createGenre(), payload)
-        .then((response) => {
-            if(response.status !== 201) {
-                throw new Error(response.text);
-            }
-            toast.success("Genre registered!");
-        })
-        .catch((err) => {
-            console.log(err);
-            toast.error("Failed genre registry!");
-        });
-    };
-    return (
+    console.log(payload);
+    await Api.buildApiPostRequest(Api.createGenre(), payload, auth)
+      .then(response => {
+        if (response.status !== 201) {
+          throw new Error(response.text);
+        }
+        toast.success("Genre registered!");
+      })
+      .catch(err => {
+        console.log(err);
+        toast.error("Failed genre registry!");
+      });
+  };
+  return (
     <div className="CreateGenres">
       <form className="CreateGenres__form" onSubmit={handleSubmit}>
         <div className="CreateGenres__form--box">
@@ -45,7 +46,8 @@ export default function CreateGenre(){
             id="genreName"
           />
         </div>
+        <input type="submit" value="Add" />
       </form>
     </div>
-    );
-};
+  );
+}

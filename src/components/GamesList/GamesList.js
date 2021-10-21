@@ -20,19 +20,17 @@ export function GamesList(){
 
     }, []);
 
-    return(
-        <div className="gameCards">
-            {games.map((game, index) => (
-
-                <GamesCard game={game} key={index}/>
-
-            ))}
-            <Link to={`/creategame`}>
-                <div className="card wrapper" >
-                    <img src={add} className="cardImage"/>
-                    <p className="createGame">Add Game</p>
-                </div>
-            </Link>
-        </div>
+    return (
+      <div className="gameCards">
+        {games.map((game, index) => (
+          <GamesCard game={game} key={index} />
+        ))}
+        <Link to={`/creategame`}>
+          <div className="card wrapper">
+            <img src={add} className="cardImage" alt="addIcon" />
+            <p className="createGame">Add Game</p>
+          </div>
+        </Link>
+      </div>
     );
 }

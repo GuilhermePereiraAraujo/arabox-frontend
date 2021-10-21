@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Api } from "../../api/Api";
 import GamesCard from "../../components/GamesCard/GamesCard";
-import { GamesList } from "../../components/GamesList/GamesList";
 
 export default function Home() {
   console.log(4);

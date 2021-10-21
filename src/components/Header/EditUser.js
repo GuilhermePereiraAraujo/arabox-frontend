@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Api } from "../../api/Api";
-import { JwtHandler } from "../../Jwthandler/Jwthandler";
 
 export default function EditUser(){
     

@@ -1,7 +1,6 @@
-import { Api } from "../../api/Api";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import GamesCard from "../../components/GamesCard/GamesCard";
+import { Api } from "../../api/Api";
 import { JwtHandler } from "../../Jwthandler/Jwthandler";
 
 export default function ViewGame(props) {
@@ -9,10 +8,9 @@ export default function ViewGame(props) {
 
   const [game, setGame] = useState(undefined);
 
-  const [isLogged, setIsLogged] = useState(JwtHandler.isJwtValid);
+  const [isLogged] = useState(JwtHandler.isJwtValid);
 
   useEffect(() => {
-    console.log(1);
     const loadGame = async () => {
       const response = await Api.buildApiGetRequest(Api.readGameById(id));
 
@@ -22,7 +20,7 @@ export default function ViewGame(props) {
     };
 
     loadGame();
-  }, []);
+  });
 
   if (!game) {
     return <div>Loading...</div>;
@@ -32,7 +30,7 @@ export default function ViewGame(props) {
     <div className="body">
       <h1>{game.title}</h1>
       <div className="gameView">
-        <img className="imageGameView" src={game.imageUrl} />
+        <img className="imageGameView" src={game.imageUrl} alt={game.title} />
         <div className="detailsView">
           <p className="description">{game.description}</p>
           <p>Year: {game.year}</p>

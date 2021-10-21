@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Api } from "../../api/Api";
 import { JwtHandler } from "../../Jwthandler/Jwthandler";
 import CreateGenreOption from "./CreateGenreOption";
 import EditUser from "./EditUser";

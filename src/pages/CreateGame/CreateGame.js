@@ -1,64 +1,67 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../api/Api";
 import { toast } from "react-toastify";
+import { Api } from "../../api/Api";
 const newGameData = {
-    title: "",
-    imageUrl: "",
-    description: "",
-    year: "",
-    imdbScore: "",
-    ytTrailerLink: "",
-    gameplayLink: "",
-    genreIds: "",
+  title: "",
+  imageUrl: "",
+  description: "",
+  year: "",
+  imdbScore: "",
+  ytTrailerLink: "",
+  gameplayLink: "",
+  genreIds: "",
 };
-export default function CreateGame(){
+export default function CreateGame() {
+  const [data, setData] = useState(newGameData);
+  const [genre, setGenre] = useState([]);
 
-    const [data, setData] = useState(newGameData);
-    const [genre, setGenre] = useState([]);
+  const loadGenres = async () => {
+    await Api.buildApiGetRequest(Api.readAllGenres())
+      .then(response => {
+        if (response.status !== 200) {
+          throw new Error(response.status);
+        }
+        return response.json();
+      })
+      .then(response => {
+        setGenre(response);
+      })
+      .catch(() => {
+        console.log("Error");
+      });
+  };
 
-    const loadGenres = async () => {
-        await Api.buildApiGetRequest(Api.readAllGenres())
-        .then((response) => {
-            if(response.status !== 200) {
-                throw new Error(response.status)
-            }
-            return response.json();
-        }).then((response) => {
-            setGenre(response);
-        }).catch(() => {
-            console.log("Error");
-        });
-    }
+  useEffect(() => {
+    loadGenres();
+  }, []);
 
-    useEffect(() => {loadGenres()},[]);
+  const onChange = event => {
+    const { name, value } = event.target;
+    setData({ ...data, [name]: value });
+  };
 
-    const onChange = (event) => {
-        const {name, value} = event.target;
-        setData({...data, [name]: value});
+  const handleSubmit = async event => {
+    event.preventDefault();
+    const payload = {
+      ...data,
+      year: +data.year,
+      imdbScore: +data.imdbScore,
+      genreIds: [+data.genreIds],
     };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const payload = {
-            ...data,
-            year : +data.year,
-            imdbScore : +data.imdbScore,
-            genreIds : [+data.genreIds],
-        };
-        console.log(payload);
-        await Api.buildApiPostRequest(Api.createGame(), payload)
-        .then((response) => {
-            if(response.status !== 201) {
-                throw new Error(response.text);
-            }
-            toast.success("Game registered!");
-        })
-        .catch((err) => {
-            console.log(err);
-            toast.error("Failed game registry!");
-        });
-    };
-    return (
+    console.log(payload);
+    await Api.buildApiPostRequest(Api.createGame(), payload)
+      .then(response => {
+        if (response.status !== 201) {
+          throw new Error(response.text);
+        }
+        toast.success("Game registered!");
+      })
+      .catch(err => {
+        console.log(err);
+        toast.error("Failed game registry!");
+      });
+  };
+  return (
     <div className="createGames">
       <form className="createGames__form" onSubmit={handleSubmit}>
         <div className="createGames__form--box">
@@ -154,7 +157,7 @@ export default function CreateGame(){
           >
             <option value="">Genres</option>
             {genre &&
-              genre.map((item) => (
+              genre.map(item => (
                 <option key={item.id} value={item.id}>
                   {item.genreName}
                 </option>
@@ -165,5 +168,5 @@ export default function CreateGame(){
         <input type="submit" value="Add" />
       </form>
     </div>
-    );
-};
+  );
+}
